@@ -1,0 +1,20 @@
+const embed = new Discord.RichEmbed()
+      .setTitle("Bu bir baslik! 256 Karaktere kadar cikabilir!")
+
+      .setAuthor("Kullanici İsmi",)
+      .setColor(0x00AE86)
+      .setDescription("Bu ise Embed Aciklamasi. 2048 karaktere kadar cikabilir!")
+      .setFooter("Bu ise alt metin. 2048 karaktere kadar cikabilir!", "https://i.hizliresim.com/3E8pg9.jpg")
+
+      .setImage("https://i.hizliresim.com/JQLOV5.png")
+
+      .setThumbnail("https://i.hizliresim.com/3E8pg9.jpg")
+      .setTimestamp()
+      url("https://frostydonuts.glitch.me")
+      addField("Bu bir bölum basliği. 256 karaktere kadar cikabilir!",
+        "Bu ise basliğin aciklamasi. 2048 karaktere kadar cikabilir!")
+      .addField("Baslik 2", "Aciklama 2")
+
+      .addBlankField(true)
+
+      message.channel.send({embed});
