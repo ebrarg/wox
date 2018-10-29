@@ -1,46 +1,33 @@
-const Discord = require("discord.js");
-const botconfig = require("../botconfig.json");
+const Discord = require('discord.js');
 
-function randomIntInc(low, high) {
-    return Math.floor(Math.random() * (high - low + 1) + low);
-}
-module.exports.run = async (client, message, args) => {
-    var rnd = randomIntInc(1, 5);
-    if (rnd === 1) {
-        const embed1 = new Discord.RichEmbed()
-            .setDescription(':8ball: 8ball')
-            .setColor('RANDOM')
-            .addField(args.join(" "), 'No')
-        message.channel.send(embed1);
-    } else if (rnd === 2) {
-        const embed2 = new Discord.RichEmbed()
-            .setDescription(':8ball: 8ball')
-            .setColor('RANDOM')
-            .addField(args.join(" "), 'Not Probable')
-        message.channel.send(embed2);
-    } else if (rnd === 3) {
-        const embed3 = new Discord.RichEmbed()
-            .setDescription(':8ball: 8ball')
-            .setColor('RANDOM')
-            .addField(args.join(" "), 'Maybe')
-        message.channel.send(embed3);
-    } else if (rnd === 4) {
-        const embed3 = new Discord.RichEmbed()
-            .setDescription(':8ball: 8ball')
-            .setColor('RANDOM')
-            .addField(args.join(" "), 'Probably')
-        message.channel.send(embed3);
-    } else if (rnd === 5) {
-        const embed3 = new Discord.RichEmbed()
-            .setDescription(':8ball: 8ball')
-            .setColor('RANDOM')
-            .addField(args.join(" "), 'Yes')
-        message.channel.send(embed3);
-    }
+const cevaplar = [
+    "evet",
+    "hayır",
+    "belki",
+    "olabilir",
+    "daha sonra tekrar sor",
+    "imkansız"
+];
 
-}
+exports.run = function(client, message, args) {
+    var soru = args.join(' ');
+
+    var cevap = cevaplar[Math.floor(Math.random() * cevaplar.length)];
+
+    if(!soru) return message.reply('Bir soru belirt. **Doğru Kullanim**: !8ball <soru>')
+    else message.channel.send(cevap)
+
+};  
+
+exports.conf = {
+  enabled: true, 
+  guildOnly: true, 
+  aliases: [],
+  permLevel: 0 
+};
+
 exports.help = {
-    name: '8BALL',
-    description: 'Answers to a question which you ask',
-    usage: '!8ball <question>'
+  name: '8ball', 
+  description: 'Sihirli 8ball sorularinizi cevaplar',
+  usage: '8ball <soru>'
 };
